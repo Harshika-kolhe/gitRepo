@@ -17,5 +17,12 @@ console.log(listItems);
 
 listItems[2].style.backgroundColor='green';
 for(var i=0; i<listItems.length;i++){
-    listItems[i].style.fontWeight='bold';
+    listItems[i].style.backgroundColor='gray';
+
+}
+
+var listbytag=document.getElementsByTagName('li');
+for(var i=0;i<listbytag.length;i++){
+    listbytag[i].style.fontWeight='bold';
+
 }
