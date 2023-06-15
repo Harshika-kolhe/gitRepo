@@ -21,6 +21,10 @@ btn.addEventListener('click', (e)=>{
     }
     else{
         console.log(input[0].value,input[1].value);
+        localStorage.setItem('name',input[0].value);
+        localStorage.setItem('Email',input[1].value);
+        localStorage.setItem('Contact',input[2].value);
+        localStorage.setItem('DateTime',input[3].value);
     }
 })
 
@@ -28,3 +32,6 @@ btn.addEventListener('onmouseover', (e)=>{
     e.preventDefault();
     btn.style.color="red";
 });
+
+
+
