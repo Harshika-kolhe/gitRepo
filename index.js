@@ -14,7 +14,9 @@
 
 const btn=document.querySelector("button");
 const input=document.querySelectorAll("input");
+
 btn.addEventListener('click', (e)=>{
+
     e.preventDefault();
     if(input[0].value==='' || input[1].value === ''){
         alert("Please enter all fields.");
@@ -35,18 +37,19 @@ btn.addEventListener('click', (e)=>{
        // localStorage.setItem('MyObj',obj);
 
         let obj_serialize=JSON.stringify(obj);
-        localStorage.setItem('MyObj',obj_serialize);
+        console.log(obj_serialize);
+        localStorage.setItem(obj.Email,obj_serialize);
 
         let Obj_deserialize=JSON.parse(localStorage.getItem('MyObj'));
-        
+
 
     }
 })
 
-btn.addEventListener('onmouseover', (e)=>{
-    e.preventDefault();
-    btn.style.color="red";
-});
+// btn.addEventListener('onmouseover', (e)=>{
+//     e.preventDefault();
+//     btn.style.color="red";
+// });
 
 
 
