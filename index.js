@@ -20,11 +20,26 @@ btn.addEventListener('click', (e)=>{
         alert("Please enter all fields.");
     }
     else{
-        console.log(input[0].value,input[1].value);
-        localStorage.setItem('name',input[0].value);
-        localStorage.setItem('Email',input[1].value);
-        localStorage.setItem('Contact',input[2].value);
-        localStorage.setItem('DateTime',input[3].value);
+        //gitconsole.log(input[0].value,input[1].value);
+        // localStorage.setItem('name',input[0].value);
+        // localStorage.setItem('Email',input[1].value);
+        // localStorage.setItem('Contact',input[2].value);
+        // localStorage.setItem('DateTime',input[3].value);
+        let obj={
+            name:input[0].value,
+            Email:input[1].value,
+            Contact:input[2].value,
+            DateTime:input[3].value
+        };
+
+       // localStorage.setItem('MyObj',obj);
+
+        let obj_serialize=JSON.stringify(obj);
+        localStorage.setItem('MyObj',obj_serialize);
+
+        let Obj_deserialize=JSON.parse(localStorage.getItem('MyObj'));
+        
+
     }
 })
 
