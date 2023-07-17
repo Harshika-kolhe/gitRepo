@@ -14,6 +14,9 @@
 
 const btn=document.querySelector("button");
 const input=document.querySelectorAll("input");
+var itemList = document.getElementById('items');
+
+itemList.addEventListener('click', removeItem);
 
 btn.addEventListener('click', (e)=>{
 
@@ -39,12 +42,54 @@ btn.addEventListener('click', (e)=>{
         let obj_serialize=JSON.stringify(obj);
         console.log(obj_serialize);
         localStorage.setItem(obj.Email,obj_serialize);
+       //create key label
+        var key = document.createElement("LABEL");
+        var keyText = document.createTextNode(input[1].value);
+        key.setAttribute("for", "key");
+        key.appendChild(keyText);
+
+        //create val label
+        var val = document.createElement("LABEL");
+        var valText = document.createTextNode(" "+input[2].value);
+        val.setAttribute("for", "val");
+        val.appendChild(valText);
+        
+        //create button
+
+        var but=document.createElement("button");
+        but.appendChild(document.createTextNode('X'));
+        but.className="btn btn-danger btn-sm float-right delete";
+        
+        var list=document.createElement("li");
+        list.className="list-group-item";
+        list.appendChild(key);
+        list.appendChild(val);
+        list.appendChild(but);
+
+        itemList.appendChild(list);
+
+
+        
+        //document.getElementById("myForm").insertBefore(x,document.getElementById("male"));
 
         let Obj_deserialize=JSON.parse(localStorage.getItem('MyObj'));
 
 
     }
 })
+
+
+function removeItem(e){
+    if(e.target.classList.contains('delete')){
+      if(confirm('Are You Sure?')){
+        var li = e.target.parentElement;
+        console.log(li.firstElementChild.innerHTML);
+        localStorage.removeItem(li.firstElementChild.innerHTML);
+        itemList.removeChild(li);
+      }
+    }
+  }
+
 
 // btn.addEventListener('onmouseover', (e)=>{
 //     e.preventDefault();
