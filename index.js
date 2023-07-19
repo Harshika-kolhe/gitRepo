@@ -54,17 +54,24 @@ btn.addEventListener('click', (e)=>{
         val.setAttribute("for", "val");
         val.appendChild(valText);
         
-        //create button
+        //create button delete
 
         var but=document.createElement("button");
         but.appendChild(document.createTextNode('X'));
         but.className="btn btn-danger btn-sm float-right delete";
+
+        //create button edit
+
+        var but1=document.createElement("button");
+        but1.appendChild(document.createTextNode('Edit'));
+        but1.className="btn btn-success btn-sm float-right edit";
         
         var list=document.createElement("li");
         list.className="list-group-item";
         list.appendChild(key);
         list.appendChild(val);
         list.appendChild(but);
+        list.appendChild(but1);
 
         itemList.appendChild(list);
 
@@ -72,7 +79,7 @@ btn.addEventListener('click', (e)=>{
         
         //document.getElementById("myForm").insertBefore(x,document.getElementById("male"));
 
-        let Obj_deserialize=JSON.parse(localStorage.getItem('MyObj'));
+        
 
 
     }
@@ -87,6 +94,18 @@ function removeItem(e){
         localStorage.removeItem(li.firstElementChild.innerHTML);
         itemList.removeChild(li);
       }
+    }
+
+    if(e.target.classList.contains('edit')){
+        var li = e.target.parentElement;
+        let Obj_deserialize=JSON.parse(localStorage.getItem(li.firstElementChild.innerHTML));
+        console.log(Obj_deserialize.Email);
+        input[0].value=Obj_deserialize.name;
+        input[1].value=Obj_deserialize.Email;
+        input[2].value=Obj_deserialize.Contact;
+        input[3].value=Obj_deserialize.DateTime;
+        localStorage.removeItem(li.firstElementChild.innerHTML);
+        itemList.removeChild(li);
     }
   }
 
